@@ -1,28 +1,18 @@
 # Examen BentoML
-
-Ce repertoire contient l'architecture basique afin de rendre l'évaluation pour l'examen BentoML.
-
-Vous êtes libres d'ajouter d'autres dossiers ou fichiers si vous jugez utile de le faire.
-
-Voici comment est construit le dossier de rendu de l'examen:
-
+Please execute the following commands for running the BentoML application
 ```bash       
-├── examen_bentoml          
-│   ├── data       
-│   │   ├── processed      
-│   │   └── raw           
-│   ├── models      
-│   ├── src       
-│   └── README.md
+python3 -m venv .venv
+pip install -r requirements.txt 
+
+python3 src/data/split_data.py
+python3 src/data/normalize_data.py
+python3 src/model/predict_parameters.py
+python3 src/model/traib_model.py
+python3 src/model/evaluate_model.py
+
+bentoml build
+bentoml containerize uni_acceptance_service:latest
+docker run --rm -p 8888:3000 uni_acceptance_service:latest
+
+pytest tests/
 ```
-
-Afin de pouvoir commencer le projet vous devez suivre les étapes suivantes:
-
-- Forker le projet sur votre compte github
-
-- Cloner le projet sur votre machine
-
-- Récuperer le jeu de données à partir du lien suivant: [Lien de téléchargement]( https://datascientest.s3-eu-west-1.amazonaws.com/examen_bentoml/admissions.csv)
-
-
-Bon travail!
