@@ -1,0 +1,20 @@
+service: "src.service:uni_acceptance_service"
+description: "Random Forest Classifier Service for predicting accidents"
+labels:
+  owner: "Nick The Great"
+  project: "accident_prediction"
+
+include:
+  - src/
+  - data/
+  - models/
+
+python:
+  packages:
+    - numpy
+    - pandas
+    - scikit-learn
+    - bentoml
+    - pydantic
+    - requests
+    - PyJWT
